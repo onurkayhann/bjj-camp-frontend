@@ -1,3 +1,10 @@
 .bg-color {
-  background-color: #2980b9;
+  
+  background-color: #2C3A47;
+  /* background-color: #778ca3; */
+}
+
+.nav {
+  padding: 1.8rem;
+  border: none;
 }
