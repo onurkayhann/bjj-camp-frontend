@@ -4,7 +4,7 @@ import './Menu.css';
 
 const isActive = (history, path) => {
   if (history.location.pathname === path) {
-    return { color: '#f1c40f', border: ' 2px solid #f1c40f' };
+    return { color: '#fffa65', border: ' 2px solid #fffa65' };
   } else {
     return { color: '#fff' };
   }
@@ -24,10 +24,10 @@ const Menu = ({ history }) => {
         <li className='nav-item'>
           <Link
             className='nav-link'
-            style={isActive(history, '/signin')}
-            to='/signin'
+            style={isActive(history, '/login')}
+            to='/login'
           >
-            Signin
+            Login
           </Link>
         </li>
 
