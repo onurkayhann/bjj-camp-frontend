@@ -8,13 +8,12 @@ const isActive = (history, path) => {
   } else {
     return { color: '#fff' };
   }
-
 };
 
 const Menu = ({ history }) => {
   return (
     <div>
-      <ul className='nav nav-tabs bg-color'>
+      <ul className='nav nav-tabs'>
         <li className='nav-item'>
           <Link className='nav-link' style={isActive(history, '/')} to='/'>
             Home

@@ -1,8 +1,5 @@
-.bg-color {
-  background-color: #2c3a47;
-}
-
 .nav {
   padding: 1.8rem;
   border: none;
+  background-color: #2c3a47;
 }
