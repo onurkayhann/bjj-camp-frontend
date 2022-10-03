@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import { signout } from '../auth';
 import './Menu.css';
 
 const isActive = (history, path) => {
@@ -10,38 +11,50 @@ const isActive = (history, path) => {
   }
 };
 
-const Menu = ({ history }) => {
-  return (
-    <div>
-      <ul className='nav nav-tabs'>
-        <li className='nav-item'>
-          <Link className='nav-link' style={isActive(history, '/')} to='/'>
-            Home
-          </Link>
-        </li>
+const Menu = ({ history }) => (
+  <div>
+    <ul className='nav nav-tabs'>
+      <li className='nav-item'>
+        <Link className='nav-link' style={isActive(history, '/')} to='/'>
+          Home
+        </Link>
+      </li>
 
-        <li className='nav-item'>
-          <Link
-            className='nav-link'
-            style={isActive(history, '/login')}
-            to='/login'
-          >
-            Login
-          </Link>
-        </li>
+      <li className='nav-item'>
+        <Link
+          className='nav-link'
+          style={isActive(history, '/login')}
+          to='/login'
+        >
+          Login
+        </Link>
+      </li>
 
-        <li className='nav-item'>
-          <Link
-            className='nav-link'
-            style={isActive(history, '/signup')}
-            to='/signup'
-          >
-            Signup
-          </Link>
-        </li>
-      </ul>
-    </div>
-  );
-};
+      <li className='nav-item'>
+        <Link
+          className='nav-link'
+          style={isActive(history, '/signup')}
+          to='/signup'
+        >
+          Signup
+        </Link>
+      </li>
+
+      <li className='nav-item'>
+        <span
+          className='nav-link'
+          style={{ cursor: 'pointer', color: '#fff' }}
+          onClick={() =>
+            signout(() => {
+              history.push('/');
+            })
+          }
+        >
+          Logout
+        </span>
+      </li>
+    </ul>
+  </div>
+);
 
 export default withRouter(Menu);
