@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import Layout from '../core/Layout';
-import { login } from '../auth/index';
+import { login, authenticate } from '../auth/index';
 
 const Login = () => {
   const [values, setValues] = useState({
-    email: '',
-    password: '',
+    email: 'hej@gmail.com',
+    password: 'hej123456',
     error: '',
     loading: false,
     redirectToReferrer: false,
@@ -25,9 +25,11 @@ const Login = () => {
       if (data.error) {
         setValues({ ...values, error: data.error, loading: false });
       } else {
-        setValues({
-          ...values,
-          redirectToReferrer: true,
+        authenticate(data, () => {
+          setValues({
+            ...values,
+            redirectToReferrer: true,
+          });
         });
       }
     });
