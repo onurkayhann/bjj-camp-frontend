@@ -31,3 +31,10 @@ export const login = async (user) => {
     console.log(err);
   }
 };
+
+export const authenticate = (data, next) => {
+  if (typeof window !== 'undefined') {
+    localStorage.setItem('jwt', JSON.stringify(data));
+    next();
+  }
+};
