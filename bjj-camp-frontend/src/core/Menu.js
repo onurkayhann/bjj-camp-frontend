@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import { signout } from '../auth';
+import { signout, isAuthenticated } from '../auth';
 import './Menu.css';
 
 const isActive = (history, path) => {
@@ -20,39 +20,45 @@ const Menu = ({ history }) => (
         </Link>
       </li>
 
-      <li className='nav-item'>
-        <Link
-          className='nav-link'
-          style={isActive(history, '/login')}
-          to='/login'
-        >
-          Login
-        </Link>
-      </li>
+      {!isAuthenticated() && (
+        <Fragment>
+          <li className='nav-item'>
+            <Link
+              className='nav-link'
+              style={isActive(history, '/login')}
+              to='/login'
+            >
+              Login
+            </Link>
+          </li>
 
-      <li className='nav-item'>
-        <Link
-          className='nav-link'
-          style={isActive(history, '/signup')}
-          to='/signup'
-        >
-          Signup
-        </Link>
-      </li>
+          <li className='nav-item'>
+            <Link
+              className='nav-link'
+              style={isActive(history, '/signup')}
+              to='/signup'
+            >
+              Signup
+            </Link>
+          </li>
+        </Fragment>
+      )}
 
-      <li className='nav-item'>
-        <span
-          className='nav-link'
-          style={{ cursor: 'pointer', color: '#fff' }}
-          onClick={() =>
-            signout(() => {
-              history.push('/');
-            })
-          }
-        >
-          Logout
-        </span>
-      </li>
+      {isAuthenticated() && (
+        <li className='nav-item'>
+          <span
+            className='nav-link'
+            style={{ cursor: 'pointer', color: '#fff' }}
+            onClick={() =>
+              signout(() => {
+                history.push('/');
+              })
+            }
+          >
+            Logout
+          </span>
+        </li>
+      )}
     </ul>
   </div>
 );
