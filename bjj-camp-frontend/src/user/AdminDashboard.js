@@ -2,7 +2,6 @@ import React from 'react';
 import Layout from '../core/Layout';
 import { isAuthenticated } from '../auth';
 import { Link } from 'react-router-dom';
-import '../core/Layout.css';
 
 const AdminDashboard = () => {
   const {
@@ -51,9 +50,7 @@ const AdminDashboard = () => {
     >
       <div className='row'>
         <div className='col-3'>{adminLinks()}</div>
-        <div className='col-9'>
-          {adminInfo()}
-        </div>
+        <div className='col-9'>{adminInfo()}</div>
       </div>
     </Layout>
   );

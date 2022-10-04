@@ -1,6 +1,5 @@
 import React from 'react';
 import Menu from './Menu';
-import './Layout.css'
 
 const Layout = ({
   title = 'Title',
@@ -10,7 +9,7 @@ const Layout = ({
 }) => (
   <div>
     <Menu />
-    <div className='jumbotron layout-bg'>
+    <div className='jumbotron'>
       <h2>{title}</h2>
       <p className='lead'>{description}</p>
     </div>
