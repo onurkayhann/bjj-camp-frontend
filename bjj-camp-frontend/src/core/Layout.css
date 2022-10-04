@@ -1,0 +1,22 @@
+.layout-bg {
+  /* background: #adff2f;
+  background: linear-gradient(to bottom, #adff2f 0%, #9ef020 100%);
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0%, #adff2f),
+    color-stop(100%, #9ef020)
+  );
+  background: -webkit-linear-gradient(top, #adff2f 0%, #9ef020 100%);
+  background: -moz-linear-gradient(top, #adff2f 0%, #9ef020 100%);
+  background: -o-linear-gradient(top, #adff2f 0%, #9ef020 100%);
+  background: -ms-linear-gradient(top, #adff2f 0%, #9ef020 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ADFF2F', endColorstr='#9EF020', GradientType=0);
+  border: 1px solid #8fe111;
+  box-shadow: inset 0 1px 0 #bcff3e;
+  -webkit-box-shadow: inset 0 1px 0 #bcff3e;
+  -moz-box-shadow: inset 0 1px 0 #bcff3e; */
+
+  background: #ecf0f1;
+}
