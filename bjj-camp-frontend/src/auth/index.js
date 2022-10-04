@@ -54,6 +54,17 @@ export const signout = async (next) => {
   }
 };
 
+/*
+REPLACE THIS WITH THE ABOVE?
+    export const signout = next => {
+    	if (typeof window !== 'undefined') {
+    		localStorage.removeItem('jwt')
+    		next()
+    	}
+    }
+
+*/
+
 
 export const isAuthenticated = () => {
   if(typeof window == 'undefined') {
