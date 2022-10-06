@@ -17,3 +17,20 @@ export const createCategory = (userId, token, category) => {
       console.log(err);
     });
 };
+
+export const createCamp = (userId, token, camp) => {
+  return fetch(`${API}/camp/create/${userId}`, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+    body: camp,
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
