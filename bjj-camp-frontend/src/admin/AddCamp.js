@@ -5,7 +5,6 @@ import { createCamp } from './apiAdmin';
 import { Link } from 'react-router-dom';
 
 const AddCamp = () => {
-  const { user, token } = isAuthenticated();
   const [values, setValues] = useState({
     name: '',
     description: '',
@@ -22,7 +21,7 @@ const AddCamp = () => {
     formData: '',
   });
 
-  // destructor the states
+  const { user, token } = isAuthenticated();
   const {
     name,
     description,
@@ -49,7 +48,26 @@ const AddCamp = () => {
   };
 
   const clickSubmit = (e) => {
-    // code will be added here
+    e.preventDefault();
+    setValues({ ...values, error: '', loading: true });
+
+    createCamp(user._id, token, formData).then((data) => {
+      if (data.error) {
+        setValues({ ...values, error: data.error });
+      } else {
+        setValues({
+          ...values,
+          name: '',
+          description: '',
+          photo: '',
+          price: '',
+          quantity: '',
+          beltcolor: '',
+          loading: false,
+          createdCamp: data.name,
+        });
+      }
+    });
   };
 
   const newPostForm = () => {
@@ -99,11 +117,8 @@ const AddCamp = () => {
         <div className='form-group'>
           <label className='text-muted'>Category</label>
           <select onChange={handleChange('category')} className='form-control'>
-            <option value='632f7ca61175796efa575a21'>All Belts</option>
-            <option value='632f7cb81175796efa575a24'>Black Belt</option>
-            <option value='632f7c951175796efa575a18'>Purple Belt</option>
-            <option value='632f7c9b1175796efa575a1b'>Blue Belt</option>
-            <option value='632f7ca01175796efa575a1e'>White Belt</option>
+            <option value='632f7cb81175796efa575a24'>All Belts</option>
+            <option value='632f7cb81175796efa575a24'>White Belts</option>
           </select>
         </div>
 
@@ -114,6 +129,16 @@ const AddCamp = () => {
             type='number'
             className='form-control'
             value={quantity}
+          />
+        </div>
+
+        <div className='form-group'>
+          <label className='text-muted'>Belt Color</label>
+          <input
+            onChange={handleChange('beltcolor')}
+            type='text'
+            className='form-control'
+            value={beltcolor}
           />
         </div>
 
