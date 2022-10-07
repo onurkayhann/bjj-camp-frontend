@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Layout from '../core/Layout';
 import { isAuthenticated } from '../auth';
-import { createCamp } from './apiAdmin';
+import { createCamp, getCategories } from './apiAdmin';
 import { Link } from 'react-router-dom';
 
 const AddCamp = () => {
@@ -37,8 +37,19 @@ const AddCamp = () => {
     formData,
   } = values;
 
+  // get categories and set form data
+  const initAdmin = () => {
+    getCategories().then((data) => {
+      if (data.error) {
+        setValues({ ...values, error: data.error });
+      } else {
+        setValues({ ...values, categories: data, formData: new FormData() });
+      }
+    });
+  };
+
   useEffect(() => {
-    setValues({ ...values, formData: new FormData() });
+    initAdmin();
   }, []);
 
   const handleChange = (name) => (e) => {
@@ -117,8 +128,13 @@ const AddCamp = () => {
         <div className='form-group'>
           <label className='text-muted'>Category</label>
           <select onChange={handleChange('category')} className='form-control'>
-            <option value='632f7cb81175796efa575a24'>All Belts</option>
-            <option value='632f7cb81175796efa575a24'>White Belts</option>
+            <option>Please select</option>
+            {categories &&
+              categories.map((category, index) => (
+                <option key={index} value={category._id}>
+                  {category.name}
+                </option>
+              ))}
           </select>
         </div>
 
@@ -147,13 +163,43 @@ const AddCamp = () => {
     );
   };
 
+  const showError = () => (
+    <div
+      className='alert alert-danger'
+      style={{ display: error ? '' : 'none' }}
+    >
+      {error}
+    </div>
+  );
+
+  const showSuccess = () => (
+    <div
+      className='alert alert-info'
+      style={{ display: createdCamp ? '' : 'none' }}
+    >
+      <h2>{`${createdCamp}`} is successfully created</h2>
+    </div>
+  );
+
+  const showLoading = () =>
+    loading && (
+      <div className='alert alert-success'>
+        <h2>Loading...</h2>
+      </div>
+    );
+
   return (
     <Layout
       title='Add a new camp'
       description={`Welcome ${user.name}! Osss! 🤙🇧🇷🥋 Ready to add a new camp?`}
     >
       <div className='row'>
-        <div className='col-md-8 offset-md-2'>{newPostForm()}</div>
+        <div className='col-md-8 offset-md-2'>
+        {showLoading()}
+        {showSuccess()}
+        {showError()}
+        {newPostForm()}
+        </div>
       </div>
     </Layout>
   );
