@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Layout from './Layout';
 import { getCamps } from './apiCore';
+import CampCard from './CampCard';
 
 const Home = () => {
   const [campsByBook, setCampsByBook] = useState([]);
@@ -33,10 +34,23 @@ const Home = () => {
   };
 
   return (
-    <Layout title='Home page' description='Brazilian Jiu-Jitsu Training Camps'>
-      {JSON.stringify(campsByBook)}
-      <hr />
-      {JSON.stringify(campsByArrival)}
+    <Layout
+      title='Home page'
+      description='Brazilian Jiu-Jitsu Training Camps'
+      className='container-fluid'
+    >
+      <h2 className='mb-4'>New Camps</h2>
+      <div className='row'>
+        {campsByArrival.map((camp, index) => (
+          <CampCard key={index} camp={camp} />
+        ))}
+      </div>
+      <h2 className='mb-4'>Top Bookings</h2>
+      <div className='row'>
+        {campsByBook.map((camp, index) => (
+          <CampCard key={index} camp={camp} />
+        ))}
+      </div>
     </Layout>
   );
 };
