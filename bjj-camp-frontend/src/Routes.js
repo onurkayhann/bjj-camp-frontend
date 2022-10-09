@@ -9,6 +9,7 @@ import AdminRoute from './auth/AdminRoute';
 import AdminDashboard from './user/AdminDashboard';
 import AddCategory from './admin/AddCategory';
 import AddCamp from './admin/AddCamp';
+import CampBook from './core/CampBook';
 import './Routes.css';
 
 const Routes = () => {
@@ -16,6 +17,7 @@ const Routes = () => {
     <BrowserRouter>
       <Switch>
         <Route path='/' exact component={Home} />
+        <Route path='/camp-book' exact component={CampBook} />
         <Route path='/login' exact component={Login} />
         <Route path='/signup' exact component={Signup} />
         <PrivateRoute path='/user/dashboard' exact component={Dashboard} />
