@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import CampImage from './CampImage';
 
 const CampCard = ({ camp }) => {
   return (
@@ -7,6 +8,7 @@ const CampCard = ({ camp }) => {
       <div className='card'>
         <div className='card-header'>{camp.name}</div>
         <div className='card-body'>
+          <CampImage item={camp} url='camp' />
           <p>{camp.description}</p>
           <p>${camp.price}</p>
           <Link to='/'></Link>
