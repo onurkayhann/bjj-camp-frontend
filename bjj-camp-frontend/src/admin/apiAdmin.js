@@ -37,10 +37,10 @@ export const createCamp = (userId, token, camp) => {
 
 export const getCategories = () => {
   return fetch(`${API}/categories`, {
-    method: 'GET'
+    method: 'GET',
   })
-  .then(response => {
-    return response.json()
-  })
-  .catch(err => console.log(err))
-}
+    .then((response) => {
+      return response.json();
+    })
+    .catch((err) => console.log(err));
+};
