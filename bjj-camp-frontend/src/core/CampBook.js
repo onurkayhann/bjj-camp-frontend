@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Layout from './Layout';
 import CampCard from './CampCard';
 import { getCategories } from './apiCore';
+import Checkbox from './Checkbox';
 
 const CampBook = () => {
   const [categories, setCategories] = useState([]);
@@ -28,7 +29,12 @@ const CampBook = () => {
       className='container-fluid'
     >
       <div className='row'>
-        <div className='col-4'>{JSON.stringify(categories)}</div>
+        <div className='col-4'>
+          <ul>
+            <h4>Filter by degree</h4>
+            <Checkbox categories={categories} />
+          </ul>
+        </div>
         <div className='col-8'>right</div>
       </div>
     </Layout>
