@@ -22,6 +22,10 @@ const CampBook = () => {
     init();
   }, []);
 
+  const handleFilters = (filters, filterBy) => {
+    console.log('CampBook', filters, filterBy);
+  };
+
   return (
     <Layout
       title='Booking page'
@@ -32,7 +36,10 @@ const CampBook = () => {
         <div className='col-4'>
           <ul>
             <h4>Filter by degree</h4>
-            <Checkbox categories={categories} />
+            <Checkbox
+              categories={categories}
+              handleFilters={filters => handleFilters(filters, 'category')}
+            />
           </ul>
         </div>
         <div className='col-8'>right</div>
