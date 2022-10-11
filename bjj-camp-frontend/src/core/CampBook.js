@@ -3,6 +3,7 @@ import Layout from './Layout';
 import CampCard from './CampCard';
 import { getCategories } from './apiCore';
 import Checkbox from './Checkbox';
+import Radiobox from './Radiobox';
 import { CampPrices } from './CampPrices';
 
 const CampBook = () => {
@@ -48,6 +49,14 @@ const CampBook = () => {
               handleFilters={(filters) => handleFilters(filters, 'category')}
             />
           </ul>
+
+          <h4>Filter by price range</h4>
+          <div>
+            <Radiobox
+              CampPrices={CampPrices}
+              handleFilters={(filters) => handleFilters(filters, 'price')}
+            />
+          </div>
         </div>
         <div className='col-8'>{JSON.stringify(myFilters)}</div>
       </div>
