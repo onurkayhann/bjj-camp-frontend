@@ -3,6 +3,7 @@ import Layout from './Layout';
 import CampCard from './CampCard';
 import { getCategories } from './apiCore';
 import Checkbox from './Checkbox';
+import { CampPrices } from './CampPrices';
 
 const CampBook = () => {
   const [myFilters, setMyFilters] = useState({
