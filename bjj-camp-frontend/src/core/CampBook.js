@@ -5,6 +5,9 @@ import { getCategories } from './apiCore';
 import Checkbox from './Checkbox';
 
 const CampBook = () => {
+  const [myFilters, setMyFilters] = useState({
+    filters: { category: [], price: [] },
+  });
   const [categories, setCategories] = useState([]);
   const [error, setError] = useState(false);
 
@@ -22,8 +25,11 @@ const CampBook = () => {
     init();
   }, []);
 
+  // Filter from category and price
   const handleFilters = (filters, filterBy) => {
-    console.log('CampBook', filters, filterBy);
+    const newFilters = { ...myFilters };
+    newFilters.filters[filterBy] = filters;
+    setMyFilters(newFilters);
   };
 
   return (
@@ -38,11 +44,11 @@ const CampBook = () => {
             <h4>Filter by degree</h4>
             <Checkbox
               categories={categories}
-              handleFilters={filters => handleFilters(filters, 'category')}
+              handleFilters={(filters) => handleFilters(filters, 'category')}
             />
           </ul>
         </div>
-        <div className='col-8'>right</div>
+        <div className='col-8'>{JSON.stringify(myFilters)}</div>
       </div>
     </Layout>
   );
