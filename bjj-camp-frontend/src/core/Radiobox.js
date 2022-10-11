@@ -1,10 +1,11 @@
 import React, { useState, useEffect, Fragment } from 'react';
 
-const Radiobox = ({ CampPrices }) => {
+const Radiobox = ({ CampPrices, handleFilters }) => {
   const [value, setValue] = useState(0);
 
-  const handleChange = () => {
-    // To be continued...
+  const handleChange = (e) => {
+    handleFilters(e.target.value);
+    setValue(e.target.value);
   };
 
   return CampPrices.map((price, index) => (
@@ -12,6 +13,7 @@ const Radiobox = ({ CampPrices }) => {
       <input
         onChange={handleChange}
         value={`${price._id}`}
+        name={price}
         type='radio'
         className='mr-2 ml-4'
       />
