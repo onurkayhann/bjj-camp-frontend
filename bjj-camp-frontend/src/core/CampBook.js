@@ -31,7 +31,25 @@ const CampBook = () => {
   const handleFilters = (filters, filterBy) => {
     const newFilters = { ...myFilters };
     newFilters.filters[filterBy] = filters;
+
+    if (filterBy == 'price') {
+      let pricesCamp = handlePrice(filters);
+      newFilters.filters[filterBy] = pricesCamp;
+    }
+
     setMyFilters(newFilters);
+  };
+
+  const handlePrice = (value) => {
+    const data = CampPrices;
+    let array = [];
+
+    for (let key in data) {
+      if (data[key]._id === parseInt(value)) {
+        array = data[key].array;
+      }
+    }
+    return array;
   };
 
   return (
