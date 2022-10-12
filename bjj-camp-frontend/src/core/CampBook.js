@@ -27,7 +27,6 @@ const CampBook = () => {
   };
 
   const loadFilteredCamps = (newFilters) => {
-    // console.log(newFilters);
     getFilteredCamps(skip, limit, newFilters).then((data) => {
       if (data.error) {
         setError(data.error);
