@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Layout from './Layout';
 import CampCard from './CampCard';
-import { getCategories } from './apiCore';
+import { getCategories, getFilteredCamps } from './apiCore';
 import Checkbox from './Checkbox';
 import Radiobox from './Radiobox';
 import { CampPrices } from './CampPrices';
@@ -12,6 +12,9 @@ const CampBook = () => {
   });
   const [categories, setCategories] = useState([]);
   const [error, setError] = useState(false);
+  const [limit, setLimit] = useState(6);
+  const [skip, setSkip] = useState(0);
+  const [filteredResults, setFilteredResults] = useState(0);
 
   const init = () => {
     getCategories().then((data) => {
@@ -23,8 +26,20 @@ const CampBook = () => {
     });
   };
 
+  const loadFilteredCamps = (newFilters) => {
+    // console.log(newFilters);
+    getFilteredCamps(skip, limit, newFilters).then((data) => {
+      if (data.error) {
+        setError(data.error);
+      } else {
+        setFilteredResults(data);
+      }
+    });
+  };
+
   useEffect(() => {
     init();
+    loadFilteredCamps(skip, limit, myFilters.filters);
   }, []);
 
   // Filter from category and price
@@ -36,7 +51,7 @@ const CampBook = () => {
       let pricesCamp = handlePrice(filters);
       newFilters.filters[filterBy] = pricesCamp;
     }
-
+    loadFilteredCamps(myFilters.filters);
     setMyFilters(newFilters);
   };
 
@@ -76,7 +91,7 @@ const CampBook = () => {
             />
           </div>
         </div>
-        <div className='col-8'>{JSON.stringify(myFilters)}</div>
+        <div className='col-8'>{JSON.stringify(filteredResults)}</div>
       </div>
     </Layout>
   );
