@@ -9,15 +9,14 @@ const CampCard = ({ camp }) => {
         <div className='card-header'>{camp.name}</div>
         <div className='card-body'>
           <CampImage item={camp} url='camp' />
-          <p>{camp.description}</p>
+          <p>{camp.description.substring(0, 100)}</p>
           <p>${camp.price}</p>
+          <p>Level: {camp.beltcolor}</p>
           <Link to='/'></Link>
           <button className='btn btn-outline-primary mt-2 mb-2 mr-2'>
             View Camp
           </button>
-          <button className='btn btn-outline-warning mt-2 mb-2'>
-            Add to cart
-          </button>
+          <button className='btn btn-outline-warning mt-2 mb-2'>Book</button>
         </div>
       </div>
     </div>
