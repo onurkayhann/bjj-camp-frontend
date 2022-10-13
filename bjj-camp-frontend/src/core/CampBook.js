@@ -14,6 +14,7 @@ const CampBook = () => {
   const [error, setError] = useState(false);
   const [limit, setLimit] = useState(6);
   const [skip, setSkip] = useState(0);
+  const [size, setSize] = useState(0);
   const [filteredResults, setFilteredResults] = useState([]);
 
   const init = () => {
@@ -32,8 +33,34 @@ const CampBook = () => {
         setError(data.error);
       } else {
         setFilteredResults(data.data);
+        setSize(data.size);
+        setSkip(0);
       }
     });
+  };
+
+  const loadMoreCamps = () => {
+    let toSkip = skip + limit;
+    getFilteredCamps(toSkip, limit, myFilters.filters).then((data) => {
+      if (data.error) {
+        setError(data.error);
+      } else {
+        setFilteredResults([...filteredResults, ...data.data]);
+        setSize(data.size);
+        setSkip(toSkip);
+      }
+    });
+  };
+
+  const loadMoreCampsButton = () => {
+    return (
+      size > 0 &&
+      size >= limit && (
+        <button onClick={loadMoreCamps} className='btn btn-warning mb-5'>
+          More Camps
+        </button>
+      )
+    );
   };
 
   useEffect(() => {
@@ -97,6 +124,8 @@ const CampBook = () => {
               <CampCard key={index} camp={camp} />
             ))}
           </div>
+          <hr />
+          {loadMoreCampsButton()}
         </div>
       </div>
     </Layout>
