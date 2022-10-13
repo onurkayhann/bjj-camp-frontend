@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Layout from './Layout';
 import { getCamps } from './apiCore';
 import CampCard from './CampCard';
+import SearchCamp from './SearchCamp';
 
 const Home = () => {
   const [campsByBook, setCampsByBook] = useState([]);
@@ -39,6 +40,7 @@ const Home = () => {
       description='Brazilian Jiu-Jitsu Training Camps'
       className='container-fluid'
     >
+      <SearchCamp />
       <h2 className='mb-4'>New Camps</h2>
       <div className='row'>
         {campsByArrival.map((camp, index) => (
