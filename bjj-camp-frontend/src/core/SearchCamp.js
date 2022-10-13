@@ -27,9 +27,48 @@ const SearchCamp = () => {
     loadCategories();
   }, []);
 
+  const searchSubmit = () => {
+    // To be continued...
+  };
+
+  const handleChange = () => {
+    // To be continued...
+  };
+
+  const searchForm = () => {
+    return (
+      <form onSubmit={searchSubmit}>
+        <span className='input-group-text'>
+          <div className='input-group input-group-lg'>
+            <div className='input-group-prepend'>
+              <select className='btn mr-2' onChange={handleChange('category')}>
+                <option value='All'>Pick a Belt Category</option>
+                {categories.map((category, index) => (
+                  <option key={index} value={category._id}>
+                    {category.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <input
+              type='search'
+              className='form-control'
+              onChange={handleChange('search')}
+              placeholder='Search'
+            />
+          </div>
+          <div className='btn input-group-append' style={{ border: 'none' }}>
+            <button className='input-group-text'>Search Camp</button>
+          </div>
+        </span>
+      </form>
+    );
+  };
+
   return (
-    <div>
-      <h2>Search Camp {JSON.stringify(categories)}</h2>
+    <div className='row'>
+      <div className='container mb-3'>{searchForm()}</div>
     </div>
   );
 };
