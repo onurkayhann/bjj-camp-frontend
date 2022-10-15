@@ -12,10 +12,11 @@ const CampCard = ({ camp }) => {
           <p>{camp.description.substring(0, 100)}</p>
           <p>${camp.price}</p>
           <p>Level: {camp.beltcolor}</p>
-          <Link to='/'></Link>
-          <button className='btn btn-outline-primary mt-2 mb-2 mr-2'>
-            View Camp
-          </button>
+          <Link to={`/camp/${camp._id}`}>
+            <button className='btn btn-outline-primary mt-2 mb-2 mr-2'>
+              View Camp
+            </button>
+          </Link>
           <button className='btn btn-outline-warning mt-2 mb-2'>Book</button>
         </div>
       </div>
