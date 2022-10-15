@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getCategories } from './apiCore';
+import { getCategories, list } from './apiCore';
 import CampCard from './CampCard';
 
 const SearchCamp = () => {
@@ -27,12 +27,27 @@ const SearchCamp = () => {
     loadCategories();
   }, []);
 
-  const searchSubmit = () => {
-    // To be continued...
+  const searchData = () => {
+    if (search) {
+      list({ search: search || undefined, category: category }).then(
+        (response) => {
+          if (response.error) {
+            console.log(response.error);
+          } else {
+            setData({ ...data, results: response, searched: true });
+          }
+        }
+      );
+    }
   };
 
-  const handleChange = () => {
-    // To be continued...
+  const searchSubmit = (e) => {
+    e.preventDefault();
+    searchData();
+  };
+
+  const handleChange = (name) => (e) => {
+    setData({ ...data, [name]: e.target.value, searched: false });
   };
 
   const searchForm = () => {
@@ -68,7 +83,10 @@ const SearchCamp = () => {
 
   return (
     <div className='row'>
-      <div className='container mb-3'>{searchForm()}</div>
+      <div className='container mb-3'>
+        {searchForm()}
+        {JSON.stringify(results)}
+      </div>
     </div>
   );
 };
