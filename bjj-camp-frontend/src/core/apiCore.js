@@ -55,4 +55,14 @@ export const list = (params) => {
     .catch((err) => console.log(err));
 };
 
+export const read = (campId) => {
+  return fetch(`${API}/camp/${campId}`, {
+    method: 'GET',
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .catch((err) => console.log(err));
+};
+
 export default getCamps;
