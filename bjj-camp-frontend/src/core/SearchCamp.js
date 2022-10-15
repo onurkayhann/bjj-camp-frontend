@@ -50,12 +50,24 @@ const SearchCamp = () => {
     setData({ ...data, [name]: e.target.value, searched: false });
   };
 
+  const searchMessage = (searched, results) => {
+    if (searched && results.length > 0) {
+      return `Found ${results.length} camps`;
+    }
+    if (searched && results.length < 1) {
+      return 'No camps found';
+    }
+  };
+
   const searchedCamps = (results = []) => {
     return (
-      <div className='row'>
-        {results.map((camp, index) => (
-          <CampCard key={index} camp={camp} />
-        ))}
+      <div>
+        <h2 className='mt-4 mb-4'>{searchMessage(searched, results)}</h2>
+        <div className='row'>
+          {results.map((camp, index) => (
+            <CampCard key={index} camp={camp} />
+          ))}
+        </div>
       </div>
     );
   };
@@ -67,7 +79,7 @@ const SearchCamp = () => {
           <div className='input-group input-group-lg'>
             <div className='input-group-prepend'>
               <select className='btn mr-2' onChange={handleChange('category')}>
-                <option value='All'>Pick a Belt Category</option>
+                <option value='All'>All Categories</option>
                 {categories.map((category, index) => (
                   <option key={index} value={category._id}>
                     {category.name}
