@@ -46,7 +46,7 @@ export const getFilteredCamps = (skip, limit, filters = {}) => {
 export const list = (params) => {
   const query = queryString.stringify(params);
 
-  return fetch(`${API}/camps?${query}`, {
+  return fetch(`${API}/camps/search?${query}`, {
     method: 'GET',
   })
     .then((response) => {
