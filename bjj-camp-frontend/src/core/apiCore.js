@@ -1,4 +1,5 @@
 import { API } from '../config';
+import queryString from 'query-string';
 
 export const getCamps = (sortBy) => {
   return fetch(`${API}/camps?sortBy=${sortBy}&order=desc&limit=6`, {
@@ -22,8 +23,10 @@ export const getCategories = () => {
 
 export const getFilteredCamps = (skip, limit, filters = {}) => {
   const data = {
-    limit, skip, filters
-  }
+    limit,
+    skip,
+    filters,
+  };
   return fetch(`${API}/camps/by/search`, {
     method: 'POST',
     headers: {
@@ -38,6 +41,18 @@ export const getFilteredCamps = (skip, limit, filters = {}) => {
     .catch((err) => {
       console.log(err);
     });
+};
+
+export const list = (params) => {
+  const query = queryString.stringify(params);
+
+  return fetch(`${API}/camps?${query}`, {
+    method: 'GET',
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .catch((err) => console.log(err));
 };
 
 export default getCamps;
