@@ -10,6 +10,7 @@ import AdminDashboard from './user/AdminDashboard';
 import AddCategory from './admin/AddCategory';
 import AddCamp from './admin/AddCamp';
 import CampBook from './core/CampBook';
+import Camp from './core/Camp';
 import './Routes.css';
 
 const Routes = () => {
@@ -24,6 +25,7 @@ const Routes = () => {
         <AdminRoute path='/admin/dashboard' exact component={AdminDashboard} />
         <AdminRoute path='/create/category' exact component={AddCategory} />
         <AdminRoute path='/create/camp' exact component={AddCamp} />
+        <Route path='/camp/:campId' exact component={Camp} />
       </Switch>
     </BrowserRouter>
   );
