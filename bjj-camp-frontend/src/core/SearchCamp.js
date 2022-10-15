@@ -50,6 +50,16 @@ const SearchCamp = () => {
     setData({ ...data, [name]: e.target.value, searched: false });
   };
 
+  const searchedCamps = (results = []) => {
+    return (
+      <div className='row'>
+        {results.map((camp, index) => (
+          <CampCard key={index} camp={camp} />
+        ))}
+      </div>
+    );
+  };
+
   const searchForm = () => {
     return (
       <form onSubmit={searchSubmit}>
@@ -83,10 +93,8 @@ const SearchCamp = () => {
 
   return (
     <div className='row'>
-      <div className='container mb-3'>
-        {searchForm()}
-        {JSON.stringify(results)}
-      </div>
+      <div className='container mb-3'>{searchForm()}</div>
+      <div className='container-fluid mb-3'>{searchedCamps(results)}</div>
     </div>
   );
 };
