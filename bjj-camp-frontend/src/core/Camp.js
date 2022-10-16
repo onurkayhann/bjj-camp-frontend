@@ -24,12 +24,17 @@ const Camp = (props) => {
 
   return (
     <Layout
-      title='Home page'
-      description='Brazilian Jiu-Jitsu Training Camps'
+      title={camp && camp.name}
+      description={
+        camp && camp.description && camp.description.substring(0, 100)
+      }
       className='container-fluid'
     >
-      <h2 className='mb-4'>Single Camp</h2>
-      <div className='row'>{JSON.stringify(camp)}</div>
+      <div className='row'>
+        {camp && camp.description && (
+          <CampCard camp={camp} showViewCampButton={false} />
+        )}
+      </div>
     </Layout>
   );
 };

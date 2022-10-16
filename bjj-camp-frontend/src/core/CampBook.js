@@ -121,7 +121,9 @@ const CampBook = () => {
           <h2 className='mb-4'>Camps</h2>
           <div className='row'>
             {filteredResults.map((camp, index) => (
-              <CampCard key={index} camp={camp} />
+              <div key={index} className='col-4 mb-3'>
+                <CampCard camp={camp} />
+              </div>
             ))}
           </div>
           <hr />
