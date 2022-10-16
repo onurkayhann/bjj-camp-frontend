@@ -44,13 +44,17 @@ const Home = () => {
       <h2 className='mb-4'>New Camps</h2>
       <div className='row'>
         {campsByArrival.map((camp, index) => (
-          <CampCard key={index} camp={camp} />
+          <div key={index} className='col-4 mb-3'>
+            <CampCard camp={camp} />
+          </div>
         ))}
       </div>
       <h2 className='mb-4'>Top Bookings</h2>
       <div className='row'>
         {campsByBook.map((camp, index) => (
-          <CampCard key={index} camp={camp} />
+          <div key={index} className='col-4 mb-3'>
+            <CampCard camp={camp} />
+          </div>
         ))}
       </div>
     </Layout>
