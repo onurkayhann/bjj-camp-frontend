@@ -65,4 +65,14 @@ export const read = (campId) => {
     .catch((err) => console.log(err));
 };
 
+export const listRelated = (campId) => {
+  return fetch(`${API}/camps/related/${campId}`, {
+    method: 'GET',
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .catch((err) => console.log(err));
+};
+
 export default getCamps;
