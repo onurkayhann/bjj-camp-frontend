@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import CampImage from './CampImage';
 import moment from 'moment';
-import { addCamp } from './bookCampHelpers';
+import { addCamp } from './cartCampHelpers';
 
 const CampCard = ({ camp, showViewCampButton = true }) => {
   const [redirect, setRedirect] = useState(false);
@@ -19,7 +19,7 @@ const CampCard = ({ camp, showViewCampButton = true }) => {
     );
   };
 
-  const addToBook = () => {
+  const addToCart = () => {
     addCamp(camp, () => {
       setRedirect(true);
     });
@@ -27,13 +27,13 @@ const CampCard = ({ camp, showViewCampButton = true }) => {
 
   const userRedirect = (redirect) => {
     if (redirect) {
-      return <Redirect to='/book' />;
+      return <Redirect to='/cart' />;
     }
   };
 
   const showBookCampButton = () => {
     return (
-      <button onClick={addToBook} className='btn btn-outline-primary mt-2 mb-2'>
+      <button onClick={addToCart} className='btn btn-outline-primary mt-2 mb-2'>
         Book Camp
       </button>
     );
