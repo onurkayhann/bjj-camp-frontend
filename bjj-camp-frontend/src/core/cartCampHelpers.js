@@ -58,3 +58,22 @@ export const updateCamp = (campId, count) => {
     localStorage.setItem('cart', JSON.stringify(cart));
   }
 };
+
+export const removeCamp = (campId) => {
+  let cart = [];
+
+  if (typeof window !== 'undefined') {
+    if (localStorage.getItem('cart')) {
+      cart = JSON.parse(localStorage.getItem('cart'));
+    }
+
+    cart.map((camp, index) => {
+      if (camp._id === campId) {
+        cart.splice(index, 1);
+      }
+    });
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }
+  return cart;
+};
