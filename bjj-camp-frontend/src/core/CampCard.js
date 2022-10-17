@@ -1,9 +1,12 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, Redirect } from 'react-router-dom';
 import CampImage from './CampImage';
 import moment from 'moment';
+import { addCamp } from './bookCampHelpers';
 
 const CampCard = ({ camp, showViewCampButton = true }) => {
+  const [redirect, setRedirect] = useState(false);
+
   const showViewButton = (showViewCampButton) => {
     return (
       showViewCampButton && (
@@ -16,9 +19,23 @@ const CampCard = ({ camp, showViewCampButton = true }) => {
     );
   };
 
+  const addToBook = () => {
+    addCamp(camp, () => {
+      setRedirect(true);
+    });
+  };
+
+  const userRedirect = (redirect) => {
+    if (redirect) {
+      return <Redirect to='/book' />;
+    }
+  };
+
   const showBookCampButton = () => {
     return (
-      <button className='btn btn-outline-primary mt-2 mb-2'>Book Camp</button>
+      <button onClick={addToBook} className='btn btn-outline-primary mt-2 mb-2'>
+        Book Camp
+      </button>
     );
   };
 
@@ -36,6 +53,7 @@ const CampCard = ({ camp, showViewCampButton = true }) => {
     <div className='card'>
       <div className='card-header camp-name'>{camp.name}</div>
       <div className='card-body'>
+        {userRedirect(redirect)}
         <CampImage item={camp} url='camp' />
         <p className='lead mt-2'>{camp.description.substring(0, 100)}</p>
         <p className='black-10'>${camp.price}</p>
