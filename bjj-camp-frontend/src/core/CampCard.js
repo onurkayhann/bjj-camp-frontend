@@ -4,7 +4,7 @@ import CampImage from './CampImage';
 import moment from 'moment';
 import { addCamp } from './cartCampHelpers';
 
-const CampCard = ({ camp, showViewCampButton = true }) => {
+const CampCard = ({ camp, showViewCampButton = true, showBookCampButton = true }) => {
   const [redirect, setRedirect] = useState(false);
 
   const showViewButton = (showViewCampButton) => {
@@ -31,8 +31,8 @@ const CampCard = ({ camp, showViewCampButton = true }) => {
     }
   };
 
-  const showBookCampButton = () => {
-    return (
+  const showBookCamp = (showBookCampButton) => {
+    return showBookCampButton && (
       <button onClick={addToCart} className='btn btn-outline-primary mt-2 mb-2'>
         Book Camp
       </button>
@@ -65,7 +65,7 @@ const CampCard = ({ camp, showViewCampButton = true }) => {
         {showQuantity(camp.quantity)}
         <br />
         {showViewButton(showViewCampButton)}
-        {showBookCampButton()}
+        {showBookCamp(showBookCampButton)}
       </div>
     </div>
   );
