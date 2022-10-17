@@ -11,6 +11,7 @@ import AddCategory from './admin/AddCategory';
 import AddCamp from './admin/AddCamp';
 import CampBook from './core/CampBook';
 import Camp from './core/Camp';
+import Cart from './core/Cart';
 import './Routes.css';
 
 const Routes = () => {
@@ -26,6 +27,7 @@ const Routes = () => {
         <AdminRoute path='/create/category' exact component={AddCategory} />
         <AdminRoute path='/create/camp' exact component={AddCamp} />
         <Route path='/camp/:campId' exact component={Camp} />
+        <Route path='/cart' exact component={Cart} />
       </Switch>
     </BrowserRouter>
   );
