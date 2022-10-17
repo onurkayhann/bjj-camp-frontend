@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Layout from './Layout';
 import { getCart, removeCamp } from './cartCampHelpers';
 import CampCard from './CampCard';
+import Checkout from './Checkout';
 
 const Cart = () => {
   const [items, setItems] = useState([]);
@@ -50,7 +51,9 @@ const Cart = () => {
         </div>
 
         <div className='col-6'>
-          <p>Show checkout options/total/update quantity</p>
+          <h2 className='mb-4'>Your cart summary</h2>
+          <hr />
+          <Checkout camps={items} />
         </div>
       </div>
     </Layout>
