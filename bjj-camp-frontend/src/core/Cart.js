@@ -17,7 +17,7 @@ const Cart = () => {
         <h2>Your cart contains {`${items.length} camps`}</h2>
         <hr />
         {items.map((camp, index) => (
-          <CampCard key={index} camp={camp} />
+          <CampCard key={index} camp={camp} showBookCampButton={false} />
         ))}
       </div>
     );
