@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { signout, isAuthenticated } from '../auth';
+import { campTotal } from './cartCampHelpers';
 import './Menu.css';
 
 const isActive = (history, path) => {
@@ -27,6 +28,19 @@ const Menu = ({ history }) => (
           to='/camp-book'
         >
           BJJ Camps
+        </Link>
+      </li>
+
+      <li className='nav-item'>
+        <Link
+          className='nav-link'
+          style={isActive(history, '/cart')}
+          to='/cart'
+        >
+          Cart{' '}
+          <sup>
+            <small className='cart-badge'>{campTotal()}</small>
+          </sup>
         </Link>
       </li>
 

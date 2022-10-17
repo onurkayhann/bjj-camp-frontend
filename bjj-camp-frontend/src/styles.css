@@ -4,6 +4,16 @@
   border-radius: 0px;
 }
 
+/* cart badge */
+
+.cart-badge,
+.cart-badge:hover {
+  color: #badc58;
+  padding: 2px;
+  font-size: 13px;
+  font-style: italic;
+}
+
 /* single camp page - camp name */
 
 .camp-name {
