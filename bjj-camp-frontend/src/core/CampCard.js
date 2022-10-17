@@ -2,14 +2,16 @@ import React, { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import CampImage from './CampImage';
 import moment from 'moment';
-import { addCamp } from './cartCampHelpers';
+import { addCamp, updateCamp } from './cartCampHelpers';
 
 const CampCard = ({
   camp,
   showViewCampButton = true,
   showBookCampButton = true,
+  cartUpdate = false,
 }) => {
   const [redirect, setRedirect] = useState(false);
+  const [count, setCount] = useState(camp.count);
 
   const showViewButton = (showViewCampButton) => {
     return (
@@ -58,6 +60,34 @@ const CampCard = ({
     );
   };
 
+  const handleChange = (campId) => (e) => {
+    setCount(e.target.value < 1 ? 1 : e.target.value);
+
+    if (e.target.value >= 1) {
+      updateCamp(campId, e.target.value);
+    }
+  };
+
+  const showCartUpdateOptions = (cartUpdate) => {
+    return (
+      cartUpdate && (
+        <div>
+          <div className='input-group mb-3'>
+            <div className='input-group-prepend'>
+              <span className='input-group-text'>Amount of spots</span>
+            </div>
+            <input
+              type='number'
+              className='form-control'
+              value={count}
+              onChange={handleChange(camp._id)}
+            />
+          </div>
+        </div>
+      )
+    );
+  };
+
   return (
     <div className='card'>
       <div className='card-header camp-name'>{camp.name}</div>
@@ -75,6 +105,7 @@ const CampCard = ({
         <br />
         {showViewButton(showViewCampButton)}
         {showBookCamp(showBookCampButton)}
+        {showCartUpdateOptions(cartUpdate)}
       </div>
     </div>
   );
