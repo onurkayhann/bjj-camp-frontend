@@ -40,3 +40,21 @@ export const getCart = () => {
   }
   return [];
 };
+
+export const updateCamp = (campId, count) => {
+  let cart = [];
+
+  if (typeof window !== 'undefined') {
+    if (localStorage.getItem('cart')) {
+      cart = JSON.parse(localStorage.getItem('cart'));
+    }
+
+    cart.map((camp, index) => {
+      if (camp._id === campId) {
+        cart[index].count = count;
+      }
+    });
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }
+};
