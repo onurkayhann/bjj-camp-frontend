@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import CampImage from './CampImage';
 import moment from 'moment';
-import { addCamp, updateCamp } from './cartCampHelpers';
+import { addCamp, updateCamp, removeCamp } from './cartCampHelpers';
 
 const CampCard = ({
   camp,
   showViewCampButton = true,
   showBookCampButton = true,
   cartUpdate = false,
+  showRemoveCampButton = false,
 }) => {
   const [redirect, setRedirect] = useState(false);
   const [count, setCount] = useState(camp.count);
@@ -45,6 +46,19 @@ const CampCard = ({
           className='btn btn-outline-primary mt-2 mb-2'
         >
           Book Camp
+        </button>
+      )
+    );
+  };
+
+  const showRemoveButton = (showRemoveCampButton) => {
+    return (
+      showRemoveCampButton && (
+        <button
+          onClick={() => removeCamp(camp._id)}
+          className='btn btn-outline-danger mt-2 mb-2'
+        >
+          Remove Camp
         </button>
       )
     );
@@ -105,6 +119,7 @@ const CampCard = ({
         <br />
         {showViewButton(showViewCampButton)}
         {showBookCamp(showBookCampButton)}
+        {showRemoveButton(showRemoveCampButton)}
         {showCartUpdateOptions(cartUpdate)}
       </div>
     </div>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Layout from './Layout';
-import { getCart } from './cartCampHelpers';
+import { getCart, removeCamp } from './cartCampHelpers';
 import CampCard from './CampCard';
 
 const Cart = () => {
@@ -9,7 +9,7 @@ const Cart = () => {
 
   useEffect(() => {
     setItems(getCart());
-  }, []);
+  }, [items]);
 
   const showCamps = (items) => {
     return (
@@ -22,6 +22,7 @@ const Cart = () => {
             camp={camp}
             showBookCampButton={false}
             cartUpdate={true}
+            showRemoveCampButton={true}
           />
         ))}
       </div>
