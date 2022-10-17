@@ -26,7 +26,7 @@ const Menu = ({ history }) => (
           style={isActive(history, '/camp-book')}
           to='/camp-book'
         >
-          Booking
+          BJJ Camps
         </Link>
       </li>
 

@@ -95,7 +95,7 @@ const CampBook = () => {
 
   return (
     <Layout
-      title='Booking page'
+      title='BJJ Camps page'
       description='Find and book your Camp'
       className='container-fluid'
     >
