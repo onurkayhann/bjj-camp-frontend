@@ -7,10 +7,11 @@ import Checkout from './Checkout';
 
 const Cart = () => {
   const [items, setItems] = useState([]);
+  const [run, setRun] = useState(false);
 
   useEffect(() => {
     setItems(getCart());
-  }, [items]);
+  }, [run]);
 
   const showCamps = (items) => {
     return (
@@ -24,25 +25,24 @@ const Cart = () => {
             showBookCampButton={false}
             cartUpdate={true}
             showRemoveCampButton={true}
+            setRun={setRun}
+            run={run}
           />
         ))}
       </div>
     );
   };
 
-  const noCampsMessage = () => {
-    return (
-      <h2>
-        No camps booked yet. <br />{' '}
-        <Link to='/camp-book'>Continue booking</Link>
-      </h2>
-    );
-  };
+  const noCampsMessage = () => (
+    <h2>
+      No camps booked yet. <br /> <Link to='/camp-book'>Continue booking</Link>
+    </h2>
+  );
 
   return (
     <Layout
       title='Booking Cart'
-      description='Manage your camps here. Add, remove, checkout or continue booking camps'
+      description='Checkout now!'
       className='container-fluid'
     >
       <div className='row'>

@@ -14,7 +14,7 @@ export const addCamp = (item, next) => {
 
     // passing the ids of each camp
 
-    cart = Array.from(new Set(cart.map((c) => c.id))).map((id) => {
+    cart = Array.from(new Set(cart.map((c) => c._id))).map((id) => {
       return cart.find((c) => c._id === id);
     });
 
