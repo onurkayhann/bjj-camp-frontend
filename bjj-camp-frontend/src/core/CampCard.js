@@ -10,6 +10,8 @@ const CampCard = ({
   showBookCampButton = true,
   cartUpdate = false,
   showRemoveCampButton = false,
+  setRun = (f) => f,
+  run = undefined,
 }) => {
   const [redirect, setRedirect] = useState(false);
   const [count, setCount] = useState(camp.count);
@@ -27,9 +29,7 @@ const CampCard = ({
   };
 
   const addToCart = () => {
-    addCamp(camp, () => {
-      setRedirect(true);
-    });
+    addCamp(camp, setRedirect(true));
   };
 
   const userRedirect = (redirect) => {
@@ -55,7 +55,10 @@ const CampCard = ({
     return (
       showRemoveCampButton && (
         <button
-          onClick={() => removeCamp(camp._id)}
+          onClick={() => {
+            removeCamp(camp._id);
+            setRun(!run);
+          }}
           className='btn btn-outline-danger mt-2 mb-2'
         >
           Remove Camp
@@ -64,7 +67,7 @@ const CampCard = ({
     );
   };
 
-  const showQuantity = (quantity, booked) => {
+  const showQuantity = (quantity) => {
     return quantity > 0 ? (
       <span className='badge badge-success badge-pill mb-1'>
         {camp.quantity - camp.booked} spots left
@@ -75,6 +78,7 @@ const CampCard = ({
   };
 
   const handleChange = (campId) => (e) => {
+    setRun(!run);
     setCount(e.target.value < 1 ? 1 : e.target.value);
 
     if (e.target.value >= 1) {
