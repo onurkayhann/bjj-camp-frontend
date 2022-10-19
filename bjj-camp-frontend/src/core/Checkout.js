@@ -47,9 +47,29 @@ const Checkout = ({ camps }) => {
     );
   };
 
+  const payCamp = () => {
+    // send nonce to server
+    let nonce;
+    let getNonce = data.instance
+      .requestPaymentMethod()
+      .then((data) => {
+        console.log(data);
+        nonce = data.nonce;
+        console.log(
+          'send nonce and total to process: ',
+          nonce,
+          getTotalCost(camps)
+        );
+      })
+      .catch((error) => {
+        console.log('dropin error: ', error);
+        setData({ ...data, error: error.message });
+      });
+  };
+
   const showDropIn = () => {
     return (
-      <div>
+      <div onBlur={() => setData({ ...data, error: '' })}>
         {data.clientToken !== null && camps.length > 0 ? (
           <div>
             <DropIn
@@ -58,9 +78,22 @@ const Checkout = ({ camps }) => {
               }}
               onInstance={(instance) => (data.instance = instance)}
             />
-            <button className='btn btn-success'>Checkout</button>
+            <button onClick={payCamp} className='btn btn-success'>
+              Pay
+            </button>
           </div>
         ) : null}
+      </div>
+    );
+  };
+
+  const showError = (error) => {
+    return (
+      <div
+        className='alert alert-danger'
+        style={{ display: error ? '' : 'none' }}
+      >
+        {error}
       </div>
     );
   };
@@ -68,7 +101,7 @@ const Checkout = ({ camps }) => {
   return (
     <div>
       <h2>Total: ${getTotalCost()}</h2>
-
+      {showError(data.error)}
       {showCheckout()}
     </div>
   );
