@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Layout from './Layout';
 import { getCamps, getBrainTreeClientToken, processPayment } from './apiCore';
+import { emptyCart } from './cartCampHelpers';
 import CampCard from './CampCard';
 import { isAuthenticated } from '../auth';
 import { Link } from 'react-router-dom';
@@ -62,6 +63,9 @@ const Checkout = ({ camps }) => {
         processPayment(userId, token, paymentData)
           .then((response) => {
             setData({ ...data, success: response.success });
+            emptyCart(() => {
+              console.log('payment success and empty cart');
+            });
           })
           .catch((error) => console.log(error));
       })
