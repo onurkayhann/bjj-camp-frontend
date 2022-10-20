@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Layout from './Layout';
-import { getCamps, getBrainTreeClientToken } from './apiCore';
+import { getCamps, getBrainTreeClientToken, processPayment } from './apiCore';
 import CampCard from './CampCard';
 import { isAuthenticated } from '../auth';
 import { Link } from 'react-router-dom';
@@ -22,7 +22,7 @@ const Checkout = ({ camps }) => {
       if (data.error) {
         setData({ ...data, error: data.error });
       } else {
-        setData({ ...data, clientToken: data.clientToken });
+        setData({ clientToken: data.clientToken });
       }
     });
   };
@@ -53,16 +53,19 @@ const Checkout = ({ camps }) => {
     let getNonce = data.instance
       .requestPaymentMethod()
       .then((data) => {
-        console.log(data);
         nonce = data.nonce;
-        console.log(
-          'send nonce and total to process: ',
-          nonce,
-          getTotalCost(camps)
-        );
+        const paymentData = {
+          paymentMethodNonce: nonce,
+          amount: getTotalCost(camps),
+        };
+
+        processPayment(userId, token, paymentData)
+          .then((response) => {
+            setData({ ...data, success: response.success });
+          })
+          .catch((error) => console.log(error));
       })
       .catch((error) => {
-        console.log('dropin error: ', error);
         setData({ ...data, error: error.message });
       });
   };
@@ -78,7 +81,7 @@ const Checkout = ({ camps }) => {
               }}
               onInstance={(instance) => (data.instance = instance)}
             />
-            <button onClick={payCamp} className='btn btn-success'>
+            <button onClick={payCamp} className='btn btn-success btn-block'>
               Pay
             </button>
           </div>
@@ -98,9 +101,21 @@ const Checkout = ({ camps }) => {
     );
   };
 
+  const showSuccess = (success) => {
+    return (
+      <div
+        className='alert alert-info'
+        style={{ display: success ? '' : 'none' }}
+      >
+        Thanks! Now you're ready for the camp! Good luck🥋
+      </div>
+    );
+  };
+
   return (
     <div>
       <h2>Total: ${getTotalCost()}</h2>
+      {showSuccess(data.success)}
       {showError(data.error)}
       {showCheckout()}
     </div>
