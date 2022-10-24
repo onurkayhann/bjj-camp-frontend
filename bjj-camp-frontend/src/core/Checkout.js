@@ -12,7 +12,7 @@ import { isAuthenticated } from '../auth';
 import { Link } from 'react-router-dom';
 import DropIn from 'braintree-web-drop-in-react';
 
-const Checkout = ({ camps }) => {
+const Checkout = ({ camps, setRun = f => f, run = undefined }) => {
   const [data, setData] = useState({
     loading: false,
     success: false,
@@ -85,6 +85,7 @@ const Checkout = ({ camps }) => {
 
             setData({ ...data, success: response.success });
             emptyCart(() => {
+              setRun(!run)
               console.log('payment success and empty cart');
               setData({ loading: false, success: true });
             });
