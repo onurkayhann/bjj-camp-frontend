@@ -12,7 +12,7 @@ import { isAuthenticated } from '../auth';
 import { Link } from 'react-router-dom';
 import DropIn from 'braintree-web-drop-in-react';
 
-const Checkout = ({ camps, setRun = f => f, run = undefined }) => {
+const Checkout = ({ camps, setRun = (f) => f, run = undefined }) => {
   const [data, setData] = useState({
     loading: false,
     success: false,
@@ -59,6 +59,8 @@ const Checkout = ({ camps, setRun = f => f, run = undefined }) => {
     );
   };
 
+  let deliveryAddress = data.address;
+
   const payCamp = () => {
     setData({ loading: true });
     // send nonce to server
@@ -78,14 +80,14 @@ const Checkout = ({ camps, setRun = f => f, run = undefined }) => {
               camps: camps,
               transaction_id: response.transaction.id,
               amount: response.transaction.amount,
-              address: data.address,
+              address: deliveryAddress,
             };
 
             createOrder(userId, token, createOrderData);
 
             setData({ ...data, success: response.success });
             emptyCart(() => {
-              setRun(!run)
+              setRun(!run);
               console.log('payment success and empty cart');
               setData({ loading: false, success: true });
             });
