@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Layout from './Layout';
-import { getCamps, getBrainTreeClientToken, processPayment } from './apiCore';
+import {
+  getCamps,
+  getBrainTreeClientToken,
+  processPayment,
+  createOrder,
+} from './apiCore';
 import { emptyCart } from './cartCampHelpers';
 import CampCard from './CampCard';
 import { isAuthenticated } from '../auth';
@@ -14,6 +19,7 @@ const Checkout = ({ camps }) => {
     clientToken: null,
     error: '',
     instance: {},
+    address: '',
   });
 
   const userId = isAuthenticated() && isAuthenticated().user._id;
@@ -32,6 +38,10 @@ const Checkout = ({ camps }) => {
   useEffect(() => {
     getToken(userId, token);
   }, []);
+
+  const handleAdress = (e) => {
+    setData({ ...data, address: e.target.value });
+  };
 
   const getTotalCost = () => {
     return camps.reduce((currentValue, nextValue) => {
@@ -64,6 +74,15 @@ const Checkout = ({ camps }) => {
 
         processPayment(userId, token, paymentData)
           .then((response) => {
+            const createOrderData = {
+              camps: camps,
+              transaction_id: response.transaction.id,
+              amount: response.transaction.amount,
+              address: data.address,
+            };
+
+            createOrder(userId, token, createOrderData);
+
             setData({ ...data, success: response.success });
             emptyCart(() => {
               console.log('payment success and empty cart');
@@ -85,6 +104,15 @@ const Checkout = ({ camps }) => {
       <div onBlur={() => setData({ ...data, error: '' })}>
         {data.clientToken !== null && camps.length > 0 ? (
           <div>
+            <div className='gorm-group mb-3'>
+              <label className='name-muted'>Delivery adress:</label>
+              <textarea
+                onChange={handleAdress}
+                className='form-control'
+                value={data.address}
+                placeholder='Type your delivery address here...'
+              />
+            </div>
             <DropIn
               options={{
                 authorization: data.clientToken,
