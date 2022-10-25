@@ -12,6 +12,7 @@ import AddCamp from './admin/AddCamp';
 import CampBook from './core/CampBook';
 import Camp from './core/Camp';
 import Cart from './core/Cart';
+import Orders from './admin/Orders';
 import './Routes.css';
 
 const Routes = () => {
@@ -28,6 +29,7 @@ const Routes = () => {
         <AdminRoute path='/create/camp' exact component={AddCamp} />
         <Route path='/camp/:campId' exact component={Camp} />
         <Route path='/cart' exact component={Cart} />
+        <AdminRoute path='/admin/orders' exact component={Orders} />
       </Switch>
     </BrowserRouter>
   );
