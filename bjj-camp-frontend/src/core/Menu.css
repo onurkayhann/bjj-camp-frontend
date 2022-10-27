@@ -1,5 +1,6 @@
 .nav {
   padding: 1.8rem;
   border: none;
-  background-color: #2c3a47;
+  /* background-color: #2c3a47; */
+  background: navy;
 }
