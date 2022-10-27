@@ -68,10 +68,12 @@ const Orders = () => {
                   <li className='list-group-item'>
                     Ordered on: {moment(o.createdAt).fromNow()}
                   </li>
-                  <li className='list-group-item'>Bill delivery address: {o.address}</li>
+                  <li className='list-group-item'>
+                    Bill delivery address: {o.address}
+                  </li>
                 </ul>
 
-                <h3 className="mt-4 mb-4 font-italic">
+                <h3 className='mt-4 mb-4 font-italic'>
                   Total camps in the order: {o.camps.length}
                 </h3>
               </div>
