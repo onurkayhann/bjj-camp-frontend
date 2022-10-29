@@ -13,6 +13,7 @@ import CampBook from './core/CampBook';
 import Camp from './core/Camp';
 import Cart from './core/Cart';
 import Orders from './admin/Orders';
+import Profile from './user/Profile';
 import './Routes.css';
 
 const Routes = () => {
@@ -30,6 +31,7 @@ const Routes = () => {
         <Route path='/camp/:campId' exact component={Camp} />
         <Route path='/cart' exact component={Cart} />
         <AdminRoute path='/admin/orders' exact component={Orders} />
+        <PrivateRoute path='/profile/:userId' exact component={Profile} />
       </Switch>
     </BrowserRouter>
   );
