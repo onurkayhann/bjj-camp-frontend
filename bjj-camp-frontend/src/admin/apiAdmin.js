@@ -101,7 +101,7 @@ export const updateOrderStatus = (userId, token, orderId, status) => {
 */
 
 export const getCamps = () => {
-  return fetch(`${API}/camps`, {
+  return fetch(`${API}/camps?limit=100`, {
     method: 'GET',
   })
     .then((response) => {
