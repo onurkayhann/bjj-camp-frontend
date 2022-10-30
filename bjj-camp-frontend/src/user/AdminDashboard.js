@@ -28,6 +28,20 @@ const AdminDashboard = () => {
               View Orders
             </Link>
           </li>
+          <li className='list-group-item'>
+            <Link className='nav-link' to='/admin/camps'>
+              Manage Camps
+            </Link>
+          </li>
+
+          {/* --- work on users CRUD down below later --- */}
+          {/*         
+            <li className='list-group-item'>
+            <Link className='nav-link' to='/admin/users'>
+              Manage Users
+            </Link>
+          </li>
+           */}
         </ul>
       </div>
     );
