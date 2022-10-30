@@ -88,3 +88,75 @@ export const updateOrderStatus = (userId, token, orderId, status) => {
     })
     .catch((err) => console.log(err));
 };
+
+/* 
+
+--- CRUD on camps --- 
+
+  - get all camps
+  - get a single camp
+  - update single camp
+  - delete single camp
+
+*/
+
+export const getCamps = () => {
+  return fetch(`${API}/camps`, {
+    method: 'GET',
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .catch((err) => console.log(err));
+};
+
+export const deleteCamp = (campId, userId, token) => {
+  return fetch(`${API}/camp/${campId}/${userId}`, {
+    method: 'DELETE',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .catch((err) => console.log(err));
+};
+
+export const getCamp = (campId) => {
+  return fetch(`${API}/camp/${campId}`, {
+    method: 'GET',
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .catch((err) => console.log(err));
+};
+
+export const updateCamp = (campId, userId, token, camp) => {
+  return fetch(`${API}/camp/${campId}/${userId}`, {
+    method: 'PUT',
+    headers: {
+      Accept: 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+    body: camp,
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .catch((err) => console.log(err));
+};
+
+/* 
+
+--- CRUD on users --- 
+
+  - get all users
+  - get a single user
+  - update single user
+  - delete single user
+
+*/
