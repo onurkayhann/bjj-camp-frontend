@@ -41,6 +41,10 @@ const ManageCamps = () => {
     >
       <div className='row'>
         <div className='col-12'>
+          <h2 className='text-center'>
+            Total: <span style={{ color: 'red' }}>{camps.length}</span> camps
+          </h2>
+          <hr />
           <ul className='list-group'>
             {camps.map((c, index) => (
               <li
