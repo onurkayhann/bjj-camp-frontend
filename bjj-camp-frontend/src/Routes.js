@@ -15,6 +15,7 @@ import Cart from './core/Cart';
 import Orders from './admin/Orders';
 import Profile from './user/Profile';
 import ManageCamps from './admin/ManageCamps';
+import UpdateCamp from './admin/UpdateCamp';
 import './Routes.css';
 
 const Routes = () => {
@@ -34,6 +35,11 @@ const Routes = () => {
         <AdminRoute path='/admin/orders' exact component={Orders} />
         <PrivateRoute path='/profile/:userId' exact component={Profile} />
         <AdminRoute path='/admin/camps' exact component={ManageCamps} />
+        <AdminRoute
+          path='/admin/camp/update/:campId'
+          exact
+          component={UpdateCamp}
+        />
       </Switch>
     </BrowserRouter>
   );
