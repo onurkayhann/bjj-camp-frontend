@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Layout from '../core/Layout';
 import { isAuthenticated } from '../auth';
 import { Link } from 'react-router-dom';
-import { getCamps, deleteCamp, getUsers } from './apiAdmin';
+import { getUsers } from './apiAdmin';
 
 const ManageUsers = () => {
   const [users, setUsers] = useState([]);
@@ -10,7 +10,7 @@ const ManageUsers = () => {
   const { user, token } = isAuthenticated();
 
   const loadUsers = () => {
-    getUsers().then((data) => {
+    getUsers(user._id, token).then((data) => {
       if (data.error) {
         console.log(data.error);
       } else {
@@ -42,13 +42,13 @@ const ManageUsers = () => {
                 className='list-group-item d-flex justify-content-between align-items-center'
               >
                 <strong>{u.name}</strong>
-                
               </li>
             ))}
           </ul>
         </div>
       </div>
     </Layout>
-  )};
+  );
+};
 
 export default ManageUsers;
