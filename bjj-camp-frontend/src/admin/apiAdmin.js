@@ -160,3 +160,13 @@ export const updateCamp = (campId, userId, token, camp) => {
   - delete single user
 
 */
+
+export const getUsers = () => {
+  return fetch(`${API}/users?limit=100`, {
+    method: 'GET',
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .catch((err) => console.log(err));
+};
