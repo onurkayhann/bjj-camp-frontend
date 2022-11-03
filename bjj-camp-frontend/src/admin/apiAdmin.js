@@ -162,7 +162,7 @@ export const updateCamp = (campId, userId, token, camp) => {
 */
 
 export const getUsers = () => {
-  return fetch(`${API}/users?limit=100`, {
+  return fetch(`${API}/users`, {
     method: 'GET',
   })
     .then((response) => {
