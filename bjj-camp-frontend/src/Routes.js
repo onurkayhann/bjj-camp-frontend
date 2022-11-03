@@ -17,6 +17,7 @@ import Profile from './user/Profile';
 import ManageCamps from './admin/ManageCamps';
 import UpdateCamp from './admin/UpdateCamp';
 import './Routes.css';
+import ManageUsers from './admin/ManageUsers';
 
 const Routes = () => {
   return (
@@ -40,6 +41,7 @@ const Routes = () => {
           exact
           component={UpdateCamp}
         />
+        <AdminRoute path='/admin/users' exact component={ManageUsers} />
       </Switch>
     </BrowserRouter>
   );
