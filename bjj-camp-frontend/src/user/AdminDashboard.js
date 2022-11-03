@@ -33,6 +33,11 @@ const AdminDashboard = () => {
               Manage Camps
             </Link>
           </li>
+          <li className='list-group-item'>
+            <Link className='nav-link' to='/admin/users'>
+              Manage Users
+            </Link>
+          </li>
 
           {/* --- work on users CRUD down below later --- */}
           {/*         
