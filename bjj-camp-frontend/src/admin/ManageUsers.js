@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Layout from '../core/Layout';
 import { isAuthenticated } from '../auth';
 import { Link } from 'react-router-dom';
-import { getUsers } from './apiAdmin';
+import { deleteUser, getUsers } from './apiAdmin';
 
 const ManageUsers = () => {
   const [users, setUsers] = useState([]);
@@ -15,6 +15,18 @@ const ManageUsers = () => {
         console.log(data.error);
       } else {
         setUsers(data);
+      }
+    });
+  };
+
+  const destroy = (userId) => {
+    const { user, token } = isAuthenticated();
+    
+    deleteUser(userId, user._id, token).then((data) => {
+      if (data.error) {
+        console.log(data.error);
+      } else {
+        loadUsers();
       }
     });
   };
@@ -42,6 +54,13 @@ const ManageUsers = () => {
                 className='list-group-item d-flex justify-content-between align-items-center'
               >
                 <strong>{u.name}</strong>
+                <span
+                  onClick={() => destroy(u._id)}
+                  className='badge badge-danger'
+                  style={{ cursor: 'pointer' }}
+                >
+                  Delete
+                </span>
               </li>
             ))}
           </ul>
