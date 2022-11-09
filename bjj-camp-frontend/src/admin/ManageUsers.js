@@ -54,6 +54,9 @@ const ManageUsers = () => {
                 className='list-group-item d-flex justify-content-between align-items-center'
               >
                 <strong>{u.name}</strong>
+                <Link to={`/admin/user/update/${u._id}`}>
+                <span className="badge badge-warning badge-pill">Update</span>
+                </Link>
                 <span
                   onClick={() => destroy(u._id)}
                   className='badge badge-danger'

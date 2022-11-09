@@ -161,6 +161,16 @@ export const updateCamp = (campId, userId, token, camp) => {
 
 */
 
+export const getUser = (userId) => {
+  return fetch(`${API}/user/${userId}`, {
+    method: 'GET',
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .catch((err) => console.log(err));
+};
+
 export const getUsers = () => {
   return fetch(`${API}/users`, {
     method: 'GET',
@@ -184,4 +194,21 @@ export const deleteUser = (userId, token) => {
       return response.json();
     })
     .catch((err) => console.log(err));
+};
+
+export const adminUpdateUser = async (userId, userInfo, token) => {
+  const myHeaders = new Headers();
+  myHeaders.append('Content-Type', 'application/json');
+  myHeaders.append('Authorization', `Bearer ${token}`);
+
+  const requestOptions = {
+    method: 'PATCH',
+    headers: myHeaders,
+    body: JSON.stringify(userInfo),
+  };
+
+  fetch(`${API}/user/admin/${userId}`, requestOptions)
+    .then((response) => response.text())
+    .then((result) => console.log(result))
+    .catch((error) => console.log('error:', error));
 };
