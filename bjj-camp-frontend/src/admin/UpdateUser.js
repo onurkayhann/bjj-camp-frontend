@@ -82,7 +82,7 @@ const UpdateUser = ({ match }) => {
               value={belt_color}
             />
           </div>
-          <button className='btn btn-primary'>Update User</button>
+          <button className='btn btn-info'>Update User</button>
         </form>
       </>
     );
