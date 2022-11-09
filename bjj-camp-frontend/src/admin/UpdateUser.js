@@ -9,22 +9,21 @@ const UpdateUser = ({ match }) => {
   const [belt_color, setBeltcolor] = useState();
   const [email, setEmail] = useState();
   const [userInfo, setUserInfo] = useState({});
+  const [redirect, setRedirect] = useState(false);
+
   const { user, token } = isAuthenticated();
+
   function handleUpdateName(e) {
     setName(e.target.value);
   }
+
   function handleUpdateEmail(e) {
     setEmail(e.target.value);
   }
+
   function handleUpdateBeltcolor(e) {
     setBeltcolor(e.target.value);
   }
-
-  const redirectAdmin = () => {
-    if (newPostForm) {
-      return <Redirect to='/admin/dashboard' />;
-    }
-  };
 
   var url = window.location.pathname;
   var userId = url.substring(url.lastIndexOf('/') + 1);
@@ -38,10 +37,21 @@ const UpdateUser = ({ match }) => {
     try {
       let response = await adminUpdateUser(userId, userInfo, token);
       setUserInfo(response);
+      setRedirect(true);
       return response;
-    } catch (err) {}
+    } catch (err) {
+      console.log(err);
+    }
   };
+
   useEffect(() => {}, [userInfo]);
+
+  const redirectAdmin = () => {
+    if (redirect) {
+      return <Redirect to='/admin/dashboard' />;
+    }
+  };
+
   const newPostForm = () => {
     return (
       <>
@@ -83,6 +93,7 @@ const UpdateUser = ({ match }) => {
         <div className='col-md-8 offset-md-2'>
           <h3>Update User</h3>
           {newPostForm()}
+          {redirectAdmin()}
         </div>
       </div>
     </Layout>
