@@ -1,4 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400&display=swap');
+
 body {
-  /* background-image: url(../public/assets/background-image.png); */
+  font-family: 'Open Sans', sans-serif;
   background: #f0f8ff;
 }
