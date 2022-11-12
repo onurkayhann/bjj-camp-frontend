@@ -1,4 +1,4 @@
-<h1 align='center'>Brazilian Jiu-Jitsu Camps - backend || MERN application</h1>
+<h1 align='center'>Brazilian Jiu-Jitsu Camps - backend | MERN application</h1>
 <br />
 <h3>Project information</h3>
 <br />
@@ -7,7 +7,7 @@
 <br />
 
 <h4>Project links</h4>
-<a href="#" target="_blank">Go to app</a> || <a href="https://github.com/onurkayhann/bjj-camp-frontend" target="_blank">Frontend Repo for the App</a> || <a href="#" target="_blank">Go to app</a> || <a href="https://github.com/onurkayhann/bjj-camp-backend" target="_blank">Backend Repo for the App</a> ||     <a href="https://www.figma.com/file/ptLf36k5QMRNGDQConA9AY/u09-fullstack-project?node-id=0%3A1" target="_blank">Figma work</a> || <a href="https://github.com/onurkayhann/bjj-camp-backend" target="_blank">Backend Repo for the App</a> ||     <a href="https://docs.google.com/document/d/1Xw3Oq3rEVeF-vSE9ItOklfLu34bz1IKPrZkm5GKRyr4/edit" target="_blank">Interviews</a> || <a href="https://docs.google.com/document/d/14vXOq5Yp2ya-JlO1_fkgj6u9mUudmgGWu6q3Rm2TWzY/edit" target="_blank">Backlog</a> || <a href="https://docs.google.com/document/d/14vXOq5Yp2ya-JlO1_fkgj6u9mUudmgGWu6q3Rm2TWzY/edit" target="_blank">Backlog</a> || <a href='https://github.com/onurkayhann?tab=projects' target='_blank'>Sprints</a>
+<a href="#" target="_blank">Go to app</a> | <a href="https://github.com/onurkayhann/bjj-camp-frontend" target="_blank">Frontend Repo for the App</a> | <a href="#" target="_blank">Go to app</a> | <a href="https://github.com/onurkayhann/bjj-camp-backend" target="_blank">Backend Repo for the App</a> |     <a href="https://www.figma.com/file/ptLf36k5QMRNGDQConA9AY/u09-fullstack-project?node-id=0%3A1" target="_blank">Figma work</a> | <a href="https://github.com/onurkayhann/bjj-camp-backend" target="_blank">Backend Repo for the App</a> |     <a href="https://docs.google.com/document/d/1Xw3Oq3rEVeF-vSE9ItOklfLu34bz1IKPrZkm5GKRyr4/edit" target="_blank">Interviews</a> | <a href="https://docs.google.com/document/d/14vXOq5Yp2ya-JlO1_fkgj6u9mUudmgGWu6q3Rm2TWzY/edit" target="_blank">Backlog</a> | <a href='https://github.com/onurkayhann?tab=projects' target='_blank'>Sprints</a>
 
 ### Used languages to create this App
 
@@ -68,5 +68,7 @@ I am super grateful that some people from the UX Designer program participated i
 ## Get in touch with me
 
 Email - onur.kayhan@chasacademy.se
+<br />
 LinkedIn: [Onur Kayhan](https://www.linkedin.com/in/onur-kayhan-02b770234/)
+<br />
 [My website](https://onur-portfolio.netlify.app/)
