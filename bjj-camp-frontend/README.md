@@ -1,70 +1,77 @@
-# Getting Started with BJJ camps
+<h1 align='center'>Brazilian Jiu-Jitsu Camps - backend | MERN application</h1>
+<br />
+<h3>Project information</h3>
+<br />
+<p align='center'>My goal with this project was to allow the BJJ interested people to book training camps in different parts of the world. Based on their belt degree, and the amount of money they want to pay. The project is also implemented with Paypal and VISA system using braintree API. A user can book, filter, search camps. A user can also login, register and browse certain parts of the webpage without having to create an account. There is also an Admin route, where the admin can delete or add a camp. An admin is also authorized to delete or update a user. For example, an admin can upgrade a user from white to blue belt. </p>
+<br />
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h4>Project links</h4>
+<a href="https://bjj-camps.netlify.app" target="_blank">Go to app</a> | <a href="https://github.com/onurkayhann/bjj-camp-frontend" target="_blank">Frontend Repo for the App</a>  | <a href="https://github.com/onurkayhann/bjj-camp-backend" target="_blank">Backend Repo for the App</a> | <a href="https://www.figma.com/file/ptLf36k5QMRNGDQConA9AY/u09-fullstack-project?node-id=0%3A1" target="_blank">Figma work</a> | <a href="https://docs.google.com/document/d/1Xw3Oq3rEVeF-vSE9ItOklfLu34bz1IKPrZkm5GKRyr4/edit" target="_blank">Interviews</a> | <a href="https://docs.google.com/document/d/14vXOq5Yp2ya-JlO1_fkgj6u9mUudmgGWu6q3Rm2TWzY/edit" target="_blank">Backlog</a> | <a href='https://github.com/onurkayhann?tab=projects' target='_blank'>Sprints</a>
 
-## Available Scripts
+### Used languages to create this App
 
-In the project directory, you can run:
+- [React.js](https://reactjs.org/)
+- [Bootstrap](https://getbootstrap.com/)
+- [CSS](https://css-tricks.com/)
+- [NodeJS](https://nodejs.org/en/)
+- [ExpressJS](https://expressjs.com/)
+- [MongoDB](https://www.mongodb.com/)
 
-### `npm start`
+## Deployment
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Frontend is deployed with Netlify, and the backend is deployed using Render. I used Render's free plan, the only con is that it will spun down after 15 minutes of inactivity. But once a new request is received, Render will kick in again and start the process in approximately 30 seconds.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## How to get started with the app
 
-### `npm test`
+### Installation steps
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Clone the repo
+   ```sh
+   git clone https://github.com/onurkayhann/bjj-camp-frontend
+   ```
+2. Install NPM packages (In the client and server folders)
+   ```sh
+   npm install
+   ```
+3. Create your .env
+   ```JS
+   REACT_APP_API_URL=http://localhost:8000/api
+   ...
+   ```
+4. Run
+   ```sh
+   npm start
+   ```
 
-### `npm run build`
+## Sitemap for frontend
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<img src='./bjj-camp-frontend/public/assets/sitemap-frontend.png' alt='sitemap' />
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Fulfilled requirements
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- RESTful API
+- Responsiveness
+- User Register, Login, and Logout
+- User can search in the search field
+- User can filter through prices and belt degrees
+- Users can use PayPal or VISA to pay for their bookings
 
-### `npm run eject`
+## License
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+MIT license
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Thanks to providers
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+I am super grateful that some people from the UX Designer program participated in my pre-work, and allowed me, to interview them. Thank you Victoria, Isabel, Neda, and Sandra.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## About the Author
 
-## Learn More
+My name is Onur, I am born and raised in Sweden, Stockholm. I am a code geek that always wants to learn about the coding, algorithms, and everything related to code. On my spare time I love reading books, learn Brazilian Jiu-Jitsu, travel, and explore different cultures.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Get in touch with me
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Email - onur.kayhan@chasacademy.se
+<br />
+LinkedIn: [Onur Kayhan](https://www.linkedin.com/in/onur-kayhan-02b770234/)
+<br />
+[My website](https://onur-portfolio.netlify.app/)
